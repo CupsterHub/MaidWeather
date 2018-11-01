@@ -24,8 +24,8 @@ public class Pm25Info {
      * aqi_levnm : 良
      * aqi_remark : 可以正常进行室外活动
      */
-    @Id
-    private long id;
+    @Id(autoincrement = true)
+    private Long id;
     private String freshtime;
     private String weaid;
     private String cityno;
@@ -36,8 +36,8 @@ public class Pm25Info {
     private String aqi_levid;
     private String aqi_levnm;
     private String aqi_remark;
-    @Generated(hash = 74713877)
-    public Pm25Info(long id, String freshtime, String weaid, String cityno,
+    @Generated(hash = 1464470541)
+    public Pm25Info(Long id, String freshtime, String weaid, String cityno,
             String citynm, String cityid, String aqi, String aqi_scope,
             String aqi_levid, String aqi_levnm, String aqi_remark) {
         this.id = id;
@@ -55,10 +55,10 @@ public class Pm25Info {
     @Generated(hash = 1342031677)
     public Pm25Info() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFreshtime() {

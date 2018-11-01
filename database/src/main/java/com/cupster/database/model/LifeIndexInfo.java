@@ -45,8 +45,8 @@ public class LifeIndexInfo {
      * lifeindex_kq_dese : 易感人群应适当减少室外活动。
      */
 //    private String success;
-    @Id
-    private long id;
+    @Id(autoincrement = true)
+    private Long id;
     private String freshtime;
     private String weaid;
     private String days;
@@ -84,8 +84,8 @@ public class LifeIndexInfo {
     private String lifeindex_kq_typenm;
     private String lifeindex_kq_attr;
     private String lifeindex_kq_dese;
-    @Generated(hash = 1878688699)
-    public LifeIndexInfo(long id, String freshtime, String weaid, String days,
+    @Generated(hash = 1853210315)
+    public LifeIndexInfo(Long id, String freshtime, String weaid, String days,
             String week_1, String simcode, String citynm, String cityid,
             String lifeindex_uv_id, String lifeindex_uv_typeno,
             String lifeindex_uv_typenm, String lifeindex_uv_attr,
@@ -137,10 +137,10 @@ public class LifeIndexInfo {
     @Generated(hash = 1828058830)
     public LifeIndexInfo() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFreshtime() {
@@ -335,6 +335,5 @@ public class LifeIndexInfo {
     public void setLifeindex_kq_dese(String lifeindex_kq_dese) {
         this.lifeindex_kq_dese = lifeindex_kq_dese;
     }
-
 
 }

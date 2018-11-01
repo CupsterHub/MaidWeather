@@ -34,8 +34,8 @@ public class WeekInfo {
      * winpid : 395
      */
 //    private String success;
-    @Id
-    private long id;
+    @Id(autoincrement = true)
+    private Long id;
     private String freshtime;
     private String weaid;
     private String days;
@@ -58,8 +58,8 @@ public class WeekInfo {
     private String weatid1;
     private String windid;
     private String winpid;
-    @Generated(hash = 1567647814)
-    public WeekInfo(long id, String freshtime, String weaid, String days,
+    @Generated(hash = 1391681384)
+    public WeekInfo(Long id, String freshtime, String weaid, String days,
             String week, String cityno, String citynm, String cityid,
             String temperature, String humidity, String weather,
             String weather_icon, String weather_icon1, String wind, String winp,
@@ -92,10 +92,10 @@ public class WeekInfo {
     @Generated(hash = 1696543146)
     public WeekInfo() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFreshtime() {

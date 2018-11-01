@@ -21,19 +21,19 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        TodayInfoDao.createTable(db, ifNotExists);
         HistoryInfoDao.createTable(db, ifNotExists);
         LifeIndexInfoDao.createTable(db, ifNotExists);
         Pm25InfoDao.createTable(db, ifNotExists);
+        TodayInfoDao.createTable(db, ifNotExists);
         WeekInfoDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        TodayInfoDao.dropTable(db, ifExists);
         HistoryInfoDao.dropTable(db, ifExists);
         LifeIndexInfoDao.dropTable(db, ifExists);
         Pm25InfoDao.dropTable(db, ifExists);
+        TodayInfoDao.dropTable(db, ifExists);
         WeekInfoDao.dropTable(db, ifExists);
     }
 
@@ -53,10 +53,10 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(TodayInfoDao.class);
         registerDaoClass(HistoryInfoDao.class);
         registerDaoClass(LifeIndexInfoDao.class);
         registerDaoClass(Pm25InfoDao.class);
+        registerDaoClass(TodayInfoDao.class);
         registerDaoClass(WeekInfoDao.class);
     }
 

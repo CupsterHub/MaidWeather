@@ -24,7 +24,7 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Freshtime = new Property(1, String.class, "freshtime", false, "FRESHTIME");
         public final static Property Weaid = new Property(2, String.class, "weaid", false, "WEAID");
         public final static Property Days = new Property(3, String.class, "days", false, "DAYS");
@@ -62,7 +62,7 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"WEEK_INFO\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"FRESHTIME\" TEXT," + // 1: freshtime
                 "\"WEAID\" TEXT," + // 2: weaid
                 "\"DAYS\" TEXT," + // 3: days
@@ -96,7 +96,11 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, WeekInfo entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String freshtime = entity.getFreshtime();
         if (freshtime != null) {
@@ -212,7 +216,11 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
     @Override
     protected final void bindValues(SQLiteStatement stmt, WeekInfo entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
+ 
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
  
         String freshtime = entity.getFreshtime();
         if (freshtime != null) {
@@ -327,13 +335,13 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
 
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public WeekInfo readEntity(Cursor cursor, int offset) {
         WeekInfo entity = new WeekInfo( //
-            cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // freshtime
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // weaid
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // days
@@ -362,7 +370,7 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
      
     @Override
     public void readEntity(Cursor cursor, WeekInfo entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setFreshtime(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setWeaid(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setDays(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
@@ -404,7 +412,7 @@ public class WeekInfoDao extends AbstractDao<WeekInfo, Long> {
 
     @Override
     public boolean hasKey(WeekInfo entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getId() != null;
     }
 
     @Override

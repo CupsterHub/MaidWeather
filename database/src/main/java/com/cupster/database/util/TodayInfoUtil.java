@@ -81,6 +81,20 @@ public class TodayInfoUtil {
     }
 
     /**
+     * 删,by key
+     */
+    public static boolean deleteTodayInfo(Long key){
+        boolean flag = false;
+        try{
+            DBManager.getDaoSession().getTodayInfoDao().deleteByKey(key);
+            flag = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    /**
      * 删，删除所有记录
      * @return
      */

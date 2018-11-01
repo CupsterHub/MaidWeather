@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MaidWeather</string>
+
+    <string name="welcome_word">天气助理，精简一句</string>
+
+
 </resources>

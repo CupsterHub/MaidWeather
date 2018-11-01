@@ -29,8 +29,8 @@ public class HistoryInfo {
      * windid : 13
      * winpid : 201
      */
-    @Id
-    private long id;
+    @Id(autoincrement = true)
+    private Long id;
     private String freshtime;
     private String weaid;
     private String week;
@@ -49,8 +49,8 @@ public class HistoryInfo {
     private String weatid;
     private String windid;
     private String winpid;
-    @Generated(hash = 1634884358)
-    public HistoryInfo(long id, String freshtime, String weaid, String week,
+    @Generated(hash = 220342634)
+    public HistoryInfo(Long id, String freshtime, String weaid, String week,
             String cityno, String citynm, String cityid, String uptime,
             String temperature, String humidity, String aqi, String weather,
             String weather_icon, String wind, String winp, int tempnum,
@@ -78,10 +78,10 @@ public class HistoryInfo {
     @Generated(hash = 1690888989)
     public HistoryInfo() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFreshtime() {
@@ -192,6 +192,5 @@ public class HistoryInfo {
     public void setWinpid(String winpid) {
         this.winpid = winpid;
     }
-
 
 }

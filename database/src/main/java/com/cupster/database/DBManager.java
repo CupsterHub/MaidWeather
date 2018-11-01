@@ -1,16 +1,12 @@
 package com.cupster.database;
 
 import android.content.Context;
+
 import com.cupster.database.dao.DaoMaster;
 import com.cupster.database.dao.DaoSession;
-import com.cupster.database.dao.HistoryInfoDao;
-import com.cupster.database.model.HistoryInfo;
-import com.cupster.loglib.LogUtil;
 
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
-
-import java.util.List;
 
 /**
  * 数据库操作，须在Application中先初始化

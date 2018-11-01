@@ -33,17 +33,19 @@ public class WeekInfoUtil {
      * @param infos
      * @return
      */
-    public static boolean insertInfo(final List<WeekInfo> infos){
+    public static boolean insertInfo( List<WeekInfo> infos){
         boolean flag = false;
         try{
-            DBManager.getDaoSession().runInTx(new Runnable() {
-                @Override
-                public void run() {
-                    for (WeekInfo info :infos){
-                        DBManager.getDaoSession().getWeekInfoDao().insertOrReplace(info);
-                    }
-                }
-            });
+            for (WeekInfo info :infos){
+                long id =DBManager.getDaoSession().getWeekInfoDao().insert(info);
+                LogUtil.d( "insert success index = "+id);
+            }
+//            DBManager.getDaoSession().runInTx(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                }
+//            });
             flag = true;
         }catch (Exception e){
             e.printStackTrace();
